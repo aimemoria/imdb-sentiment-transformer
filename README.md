@@ -2,7 +2,7 @@
 
 A deep learning project that uses the Transformer architecture to classify movie reviews from the IMDB dataset as positive or negative.
 
-## 📋 Overview
+## Overview
 
 This project demonstrates how to:
 - Load and preprocess the IMDB movie reviews dataset
@@ -10,7 +10,7 @@ This project demonstrates how to:
 - Evaluate the model's performance
 - Make predictions on new reviews
 
-## 🏗️ Architecture
+## Architecture
 
 ### Transformer Architecture
 The diagram shows the classic Transformer architecture with:
@@ -44,7 +44,7 @@ We use **DistilBERT**, a distilled version of BERT (Bidirectional Encoder Repres
 - Pre-trained on millions of documents
 - Fine-tuned on IMDB for sentiment classification
 
-## 📊 Dataset
+## Dataset
 
 **IMDB Movie Reviews Dataset**
 - **Training Set**: 25,000 labeled reviews
@@ -52,7 +52,7 @@ We use **DistilBERT**, a distilled version of BERT (Bidirectional Encoder Repres
 - **Classes**: Binary (Positive/Negative)
 - **Source**: Large Movie Review Dataset v1.0
 
-## 🔧 How It Works
+## How It Works
 
 ### 1. **Tokenization**
 ```python
@@ -76,7 +76,7 @@ model = AutoModelForSequenceClassification.from_pretrained(
 - 12 attention heads per layer
 - 768 hidden dimensions
 - ~66 million parameters
-- Classification head on top ([CLS] token → 2 classes)
+- Classification head on top ([CLS] token -> 2 classes)
 
 ### 3. **Training Process**
 
@@ -89,9 +89,9 @@ model = AutoModelForSequenceClassification.from_pretrained(
 
 **Training Flow:**
 ```
-Input Review → Tokenization → DistilBERT Encoder → [CLS] Token →
-Linear Layer → Softmax → Probability Distribution → Loss Calculation →
-Backpropagation → Weight Update
+Input Review -> Tokenization -> DistilBERT Encoder -> [CLS] Token ->
+Linear Layer -> Softmax -> Probability Distribution -> Loss Calculation ->
+Backpropagation -> Weight Update
 ```
 
 ### 4. **Attention Mechanism**
@@ -104,7 +104,7 @@ The multi-head attention allows the model to:
 
 **Attention Formula:**
 ```
-Attention(Q, K, V) = softmax(QK^T / √d_k)V
+Attention(Q, K, V) = softmax(QK^T / sqrt(d_k))V
 ```
 - Q (Query): What am I looking for?
 - K (Key): What do I contain?
@@ -120,18 +120,18 @@ For a new review:
 5. Softmax to get probabilities
 6. Argmax to get final prediction
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 transformers/
-├── imdb_sentiment_analysis.py    # Main training script
-├── requirements.txt               # Python dependencies
-├── README.md                      # This file
-├── imdb_sentiment_model/         # Training checkpoints (created during training)
-└── imdb_sentiment_model_final/   # Final saved model (created after training)
+   imdb_sentiment_analysis.py    # Main training script
+   requirements.txt              # Python dependencies
+   README.md                     # This file
+   imdb_sentiment_model/         # Training checkpoints (created during training)
+   imdb_sentiment_model_final/   # Final saved model (created after training)
 ```
 
-## 🚀 Installation
+## Installation
 
 1. **Install dependencies:**
 ```bash
@@ -146,7 +146,7 @@ Required packages:
 - `numpy`: Numerical computing
 - `accelerate`: For distributed training
 
-## 📖 Usage
+## Usage
 
 ### Train the Model
 
@@ -181,7 +181,7 @@ With full training, you should achieve:
 - **Recall**: ~92-94%
 - **F1 Score**: ~92-94%
 
-## 🧪 Making Predictions
+## Making Predictions
 
 After training, the script automatically tests on sample reviews:
 
@@ -196,15 +196,15 @@ test_reviews = [
 **Example Output:**
 ```
 Review: "This movie was absolutely fantastic! Best film I've seen this year."
-Prediction: Positive 😊
+Prediction: Positive
 Confidence: Negative=2.34%, Positive=97.66%
 
 Review: "Terrible movie, waste of time. I want my money back."
-Prediction: Negative 😞
+Prediction: Negative
 Confidence: Negative=98.45%, Positive=1.55%
 ```
 
-## 🔍 Key Hyperparameters
+## Key Hyperparameters
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
@@ -215,13 +215,13 @@ Confidence: Negative=98.45%, Positive=1.55%
 | Warmup Steps | 500 | Gradual learning rate increase |
 | Weight Decay | 0.01 | L2 regularization |
 
-## 🎯 Model Performance
+## Model Performance
 
 ### What the Model Learns
 
 The transformer learns to:
 - Identify sentiment-bearing words ("excellent", "awful")
-- Understand negation ("not bad" → positive)
+- Understand negation ("not bad" -> positive)
 - Recognize intensifiers ("very good", "extremely poor")
 - Capture context and nuance
 - Handle sarcasm to some degree
@@ -235,7 +235,7 @@ The attention mechanism learns to:
 - Weight "not good" together as negative sentiment
 - Downweight neutral words like "This", "movie", "was"
 
-## 📚 Technical Details
+## Technical Details
 
 ### Why DistilBERT?
 
@@ -259,7 +259,7 @@ The model uses transfer learning:
 - **RAM**: 8GB minimum, 16GB recommended
 - **Storage**: ~1GB for model and dataset
 
-## 🛠️ Customization
+## Customization
 
 ### Use Different Models
 
@@ -280,14 +280,14 @@ training_args = TrainingArguments(
 )
 ```
 
-## 📊 Evaluation Metrics
+## Evaluation Metrics
 
 - **Accuracy**: Overall correctness
 - **Precision**: Of predicted positives, how many are correct?
 - **Recall**: Of actual positives, how many did we find?
 - **F1 Score**: Harmonic mean of precision and recall
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Out of Memory
 - Reduce batch size: `per_device_train_batch_size=4`
@@ -304,7 +304,7 @@ training_args = TrainingArguments(
 - Adjust learning rate: Try 1e-5 or 5e-5
 - Use full dataset: Don't use subset
 
-## 📖 References
+## References
 
 1. **Attention Is All You Need** (Vaswani et al., 2017)
    - Original Transformer paper
@@ -318,28 +318,10 @@ training_args = TrainingArguments(
 4. **Hugging Face Transformers**
    - https://huggingface.co/docs/transformers
 
-## 📝 License
+## License
 
-This project uses the IMDB dataset and pre-trained models from Hugging Face, which are publicly available for research and educational purposes.
+MIT
 
-## 🤝 Contributing
+## Contributing
 
-Feel free to:
-- Try different models
-- Experiment with hyperparameters
-- Add more evaluation metrics
-- Implement attention visualization
-- Test on other datasets
-
-## 🎓 Learning Objectives
-
-After running this project, you will understand:
-- How transformers process sequential data
-- The importance of attention mechanisms
-- Transfer learning and fine-tuning
-- Sentiment analysis with deep learning
-- Practical NLP with Hugging Face
-
----
-
-**Happy Learning! 🚀**
+Contributions are welcome. Please open an issue to discuss changes before submitting a pull request.
